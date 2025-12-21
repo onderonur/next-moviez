@@ -1,15 +1,16 @@
 import { Box, CircularProgress } from '@mui/material';
-import { forwardRef } from 'react';
 
 type LoadingIndicatorProps = {
+  ref?: React.Ref<HTMLDivElement>;
   loading: boolean;
   children?: React.ReactNode;
 };
 
-export const LoadingIndicator = forwardRef<
-  React.ComponentRef<'div'>,
-  LoadingIndicatorProps
->(function LoadingIndicator({ loading, children }, ref) {
+export function LoadingIndicator({
+  ref,
+  loading,
+  children,
+}: LoadingIndicatorProps) {
   if (!loading) return children;
 
   return (
@@ -25,4 +26,4 @@ export const LoadingIndicator = forwardRef<
       <CircularProgress aria-label="Loading..." size={48} color="secondary" />
     </Box>
   );
-});
+}
